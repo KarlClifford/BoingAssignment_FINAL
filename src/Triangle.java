@@ -41,7 +41,7 @@ public class Triangle extends ClosedShape {
      * Method to convert a triangle to a string.
      */
     public String toString () {
-        String result = "This is an triangle\n";
+        String result = "This is a triangle\n";
         result += super.toString ();
         result += "Its width is " + this.width + " and its height is " + this.height + "\n";
         return result;
