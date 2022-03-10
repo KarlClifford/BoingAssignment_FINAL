@@ -115,6 +115,31 @@ public class ReadShapeFile {
 
 		return new Square(insertionTime, x, y, vx, vy, side, colour, isFilled);
 	}
+
+	//TODO: Implement RECT and change lineElement configurations to suite this shape
+	/**
+	 * Constructs a rectangle shape using read file data.
+	 * @param lineElement is the read line passed in from readLineByLine() method.
+	 * @return a Rect object.
+	 */
+	private static ClosedShape constructShapeTriangle(String[] lineElement) {
+
+		final int insertionTime = Integer.parseInt(lineElement[1]);
+		final int x = Integer.parseInt(lineElement[2]);
+		final int y = Integer.parseInt(lineElement[3]);
+		final int vx = Integer.parseInt(lineElement[4]);
+		final int vy = Integer.parseInt(lineElement[5]);
+		final int width = Integer.parseInt(lineElement[7]);
+		final int height = Integer.parseInt(lineElement[8]);
+		final int r = Integer.parseInt(lineElement[9]);
+		final int g = Integer.parseInt(lineElement[10]);
+		final int b = Integer.parseInt(lineElement[11]);
+		final Color colour = Color.rgb(r,g, b);
+		final boolean isFilled = Boolean.parseBoolean(lineElement[6]);
+
+
+		return new Triangle(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
+	}
 	//TODO: Add branching comments
 
 	/**
@@ -138,6 +163,9 @@ public class ReadShapeFile {
 				break;
 			case "square":
 				shape = constructShapeSquare(lineElement);
+				break;
+			case "triangle":
+				shape = constructShapeTriangle(lineElement);
 				break;
 			default:
 				throw new IllegalStateException("Unexpected value: "
