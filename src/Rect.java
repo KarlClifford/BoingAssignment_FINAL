@@ -41,7 +41,7 @@ public class Rect extends ClosedShape {
      * Method to convert a rectangle to a string.
      */
     public String toString () {
-        String result = "This is an rectangle\n";
+        String result = "This is a rectangle\n";
         result += super.toString ();
         result += "Its width is " + this.width + " and its height is " + this.height + "\n";
         return result;

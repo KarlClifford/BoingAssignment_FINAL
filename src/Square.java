@@ -41,9 +41,9 @@ public class Square extends ClosedShape {
      * Method to convert a square to a string.
      */
     public String toString () {
-        String result = "This is an square\n";
+        String result = "This is a square\n";
         result += super.toString ();
-        result += "Its width is " + this.side + " and its height is " + this.side + "\n";
+        result += "Its side is " + this.side + "\n";
         return result;
     }
 
