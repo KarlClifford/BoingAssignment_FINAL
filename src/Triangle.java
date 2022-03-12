@@ -75,6 +75,16 @@ public class Triangle extends ClosedShape {
         return height;
     }
 
+    public double[] getXCoords() {
+        return new double[] {x + width, x+ width, x + (width + width)};
+    }
+
+    public double[] getYCoords() {
+        return new double[] {y + height, y + (height*2), y + (height >> 1)};
+    }
+    
+    
+
     /**
      * Draw the triangle.
      * @param g The graphics object of the drawable component.
@@ -83,10 +93,10 @@ public class Triangle extends ClosedShape {
         g.setFill (colour);
         g.setStroke( colour );
         if (isFilled) {
-            g.fillRect( x, y, width, height );
+            g.fillPolygon(getXCoords(), getYCoords(), 3);
         }
         else {
-            g.strokeRect( x, y, width, height );
+            g.strokePolygon(getXCoords(), getYCoords(), 3);
         }
     }
 }
