@@ -76,11 +76,11 @@ public class Triangle extends ClosedShape {
     }
 
     public double[] getXCoords() {
-        return new double[] {x + width, x+ width, x + (width + width)};
+        return new double[] {(x + width), (x + width), (x - width)};
     }
 
     public double[] getYCoords() {
-        return new double[] {y + height, y + (height*2), y + (height >> 1)};
+        return new double[] {(y - height), ( y + height), ((1 >> height) + y)};
     }
     
     
