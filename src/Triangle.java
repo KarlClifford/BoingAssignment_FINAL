@@ -35,6 +35,8 @@ public class Triangle extends ClosedShape {
         super (insertionTime, x, y, vx, vy, colour, isFilled);
         this.width = width;
         this.height = height;
+        System.out.println("WIDTH: " + width);
+        System.out.println("HEIGHT: " + height);
     }
 
     /**
@@ -76,11 +78,11 @@ public class Triangle extends ClosedShape {
     }
 
     public double[] getXCoords() {
-        return new double[] {(x + width), (x + width), (x - width)};
+        return new double[] {(x + width), (x + width), x};
     }
 
     public double[] getYCoords() {
-        return new double[] {(y - height), ( y + height), ((1 >> height) + y)};
+        return new double[] {y, ( y + height), (y + (height >> 1))};
     }
     
     
