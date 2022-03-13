@@ -89,7 +89,7 @@ public class Triangle extends ClosedShape {
      * @return The X coordinates in the format a,b,c.
      */
     public double[] getXCoords() {
-        return new double[] {(x + width), (x + width), x};
+        return new double[] {(getX() + getWidth()), (getX() + getWidth()), getX()};
     }
 
     /**
@@ -97,7 +97,7 @@ public class Triangle extends ClosedShape {
      * @return The Y coordinates in the format a,b,c.
      */
     public double[] getYCoords() {
-        return new double[] {y, (y + height), (y + (height >> 1))};
+        return new double[] {getY(), (getY() + getHeight()), (getY() + (getHeight() >> 1))};
     }
     
     
