@@ -1,29 +1,30 @@
-
-
 /**
  * Square.java
- * @version 1.0.0
- * Written by Karl Clifford
+ * @version 1.0
+ *
+ * Created 10/03/2022
+ *
+ * Last Modified 15/03/2022
+ * @author Karl Clifford
+ *
+ * This class creates a square shape.
  */
 
 import javafx.scene.paint.Color;
 import javafx.scene.canvas.GraphicsContext;
 
-import java.security.InvalidParameterException;
-
 /**
- *
  * Square is a shape that can be drawn to the screen, either
  * filled with colour or opaque.
  * Its position is determined by the upper left corner of the
- * rectangle's bounding rectangle
+ * square's bounding square.
  */
 public class Square extends ClosedShape {
-    //The width and height of the square (major and minor axis)
+    // The width and height of the square (major and minor axis).
     private int side;
 
     /**
-     * Creates a rectangle.
+     * Creates a square.
      * @param x The display component's x position.
      * @param y The display component's y position.
      * @param vx The display component's x velocity.
@@ -32,17 +33,18 @@ public class Square extends ClosedShape {
      * @param colour The line colour or fill colour.
      * @param isFilled True if the square is filled with colour, false if opaque.
      */
-    public Square (int insertionTime, int x, int y, int vx, int vy, int side, Color colour, boolean isFilled) {
-        super (insertionTime, x, y, vx, vy, colour, isFilled);
+    public Square(int insertionTime, int x, int y, int vx, int vy,
+                   int side, Color colour, boolean isFilled) {
+        super(insertionTime, x, y, vx, vy, colour, isFilled);
         this.side = side;
     }
 
     /**
      * Method to convert a square to a string.
      */
-    public String toString () {
+    public String toString() {
         String result = "This is a square\n";
-        result += super.toString ();
+        result += super.toString();
         result += "Its side is " + this.side + "\n";
         return result;
     }
@@ -50,14 +52,14 @@ public class Square extends ClosedShape {
     /**
      * @param width Resets the width.
      */
-    public void setWidth (int width) {
+    public void setWidth(int width) {
         this.side = width;
     }
 
     /**
      * @param height Resets the height.
      */
-    public void setHeight (int height) {
+    public void setHeight(int height) {
         this.side = height;
     }
 
@@ -79,14 +81,13 @@ public class Square extends ClosedShape {
      * Draw the square.
      * @param g The graphics object of the drawable component.
      */
-    public void draw (GraphicsContext g) {
-        g.setFill (colour);
-        g.setStroke( colour );
+    public void draw(GraphicsContext g) {
+        g.setFill(colour);
+        g.setStroke(colour);
         if (isFilled) {
-            g.fillRect( x, y, side, side );
-        }
-        else {
-            g.strokeRect( x, y, side, side );
+            g.fillRect(x, y, side, side);
+        } else {
+            g.strokeRect(x, y, side, side);
         }
     }
 }

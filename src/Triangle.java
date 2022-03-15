@@ -15,7 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 /**
  *
- * Rect is a triangle shape that can be drawn to the screen, either
+ * Triangle is a triangle shape that can be drawn to the screen, either
  * filled with colour or opaque.
  * Its position is determined by the upper left corner of the
  * triangle's bounding shape.
@@ -34,10 +34,10 @@ public class Triangle extends ClosedShape {
      * @param y The display component's y position.
      * @param vx The display component's x velocity.
      * @param vy The display component's y velocity.
-     * @param width The width of the rect (in pixels).
-     * @param height The height of the rect (in pixels).
+     * @param width The width of the triangle (in pixels).
+     * @param height The height of the triangle (in pixels).
      * @param colour The line colour or fill colour.
-     * @param isFilled True if the rect is filled with colour, false if opaque.
+     * @param isFilled True if the triangle is filled with colour, false if opaque.
      */
     public Triangle(int insertionTime, int x, int y, int vx, int vy,
                      int width, int height, Color colour, boolean isFilled) {
