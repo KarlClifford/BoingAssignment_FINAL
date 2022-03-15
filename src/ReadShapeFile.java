@@ -1,13 +1,21 @@
 /**
- * This class reads a shape file.  For the format of this shape file, see the assignment description.
- * Also, please see the shape files ExampleShapes.txt, ExampleShapesStill.txt, and TwoRedCircles.txt
+ * ReadShapeFile
+ * @version 1.0
  *
+ * Created 10/03/2022
+ *
+ * Last Modified 15/03/2022
  * @author Karl Clifford
  *
+ * No Copyright
+ *
+ * This class reads a shape file. For the format of this shape file, see the assignment description.
+ * Also, please see the shape files ExampleShapes.txt, ExampleShapesStill.txt, and TwoRedCircles.txt
  */
 
 import javafx.scene.paint.Color;
 
+import javax.lang.model.type.UnknownTypeException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Locale;
@@ -15,6 +23,7 @@ import java.util.Scanner;
 
 public class ReadShapeFile {
 
+	// These variables dictate the order of columns in a row and should not be modified.
 	private static final int COLUMN_ONE = 1;
 	private static final int COLUMN_TWO = 2;
 	private static final int COLUMN_THREE = 3;
@@ -153,37 +162,27 @@ public class ReadShapeFile {
 	 * @return a ClosedShape object.
 	 */
 	private static ClosedShape chooseConstructor(String shapeType, String[] row) {
-		ClosedShape shape;
-		switch (shapeType.toLowerCase(Locale.ROOT)) {
-			case "circle":
-				shape = constructShapeCircle(row);
-				break;
-			case "oval":
-				shape = constructShapeOval(row);
-				break;
-			case "rect":
-				shape = constructShapeRect(row);
-				break;
-			case "square":
-				shape = constructShapeSquare(row);
-				break;
-			case "triangle":
-				shape = constructShapeTriangle(row);
-				break;
-			default:
-				throw new IllegalStateException("Unexpected value: "
-						+ shapeType.toLowerCase(Locale.ROOT));
-
-		}
-		return shape;
+		return switch (shapeType.toLowerCase(Locale.ROOT)) {
+			// First element of row is circle so pass row to circle constructor.
+			case "circle" -> constructShapeCircle(row);
+			// First element of row is oval so pass row to oval constructor.
+			case "oval" -> constructShapeOval(row);
+			// First element of row is rect so pass row to rectangle constructor.
+			case "rect" -> constructShapeRect(row);
+			// First element of row is square so pass row to square constructor.
+			case "square" -> constructShapeSquare(row);
+			// First element of row is triangle so pass row to triangle constructor.
+			case "triangle" -> constructShapeTriangle(row);
+			// Shape file contains an unknown shape so throw an error.
+			default -> throw new IllegalArgumentException("Unexpected value: "
+					+ shapeType.toLowerCase(Locale.ROOT));
+		};
 	}
 
 	/**
-	 * Reads the data file used by the program and returns the constructed queue
-	 * 
-	 * @param in
-	 *            the scanner of the file
-	 * @return the queue represented by the data file
+	 * Reads the data file used by the program and returns the constructed queue.
+	 * @param in the scanner of the file.
+	 * @return the queue represented by the shape data file.
 	 */
 	private static Queue<ClosedShape> readLineByLine(Scanner in) {
 		Queue<ClosedShape> shapeQueue = new Queue<>();
@@ -191,10 +190,10 @@ public class ReadShapeFile {
 		// Read in the shape files and place them on the Queue
 		while (in.hasNext()) {
 			String readLine = in.nextLine();
-			String[] lineElement = readLine.split(" ");
+			String[] row = readLine.split(" ");
 
 			// Construct the shape and enqueue to shapeQueue
-			ClosedShape shape = chooseConstructor(lineElement[0], lineElement);
+			ClosedShape shape = chooseConstructor(row[0], row);
 			shapeQueue.enqueue(shape);
 		}
 
@@ -210,10 +209,8 @@ public class ReadShapeFile {
 	 * Method to read the file and return a queue of shapes from this file. The
 	 * program should handle the file not found exception here and shut down the
 	 * program gracefully.
-	 * 
-	 * @param filename
-	 *            the name of the file
-	 * @return the queue of shapes from the file
+	 * @param filename the name of the file.
+	 * @return the queue of shapes from the file.
 	 */
 	public static Queue<ClosedShape> readDataFile(String filename) {
 		// This file contains the shapes to generate.
