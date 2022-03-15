@@ -2,42 +2,49 @@
  * This class reads a shape file.  For the format of this shape file, see the assignment description.
  * Also, please see the shape files ExampleShapes.txt, ExampleShapesStill.txt, and TwoRedCircles.txt
  *
- * @author you
+ * @author Karl Clifford
  *
  */
 
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import java.io.*;
-import java.util.*;
-import java.util.stream.Stream;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class ReadShapeFile {
 
-
-	// TODO: You will likely need to write four methods here. One method to
-	// construct each shape
-	// given the Scanner passed as a parameter. I would suggest static
-	// methods in this case.
+	private static final int COLUMN_ONE = 1;
+	private static final int COLUMN_TWO = 2;
+	private static final int COLUMN_THREE = 3;
+	private static final int COLUMN_FOUR = 4;
+	private static final int COLUMN_FIVE = 5;
+	private static final int COLUMN_SIX = 6;
+	private static final int COLUMN_SEVEN = 7;
+	private static final int COLUMN_EIGHT = 8;
+	private static final int COLUMN_NINE = 9;
+	private static final int COLUMN_TEN = 10;
+	private static final int COLUMN_ELEVEN = 11;
 
 	/**
 	 * Constructs a circle shape using read file data.
-	 * @param lineElement is the read line passed in from readLineByLine() method.
+	 * @param row is the read line passed in from readLineByLine() method.
 	 * @return a Circle object.
 	 */
-	private static ClosedShape constructShapeCircle(String[] lineElement) {
+	private static ClosedShape constructShapeCircle(String[] row) {
 
-		final int insertionTime = Integer.parseInt(lineElement[1]);
-		final int x = Integer.parseInt(lineElement[2]);
-		final int y = Integer.parseInt(lineElement[3]);
-		final int vx = Integer.parseInt(lineElement[4]);
-		final int vy = Integer.parseInt(lineElement[5]);
-		final int diameter = Integer.parseInt(lineElement[7]);
-		final int r = Integer.parseInt(lineElement[8]);
-		final int g = Integer.parseInt(lineElement[9]);
-		final int b = Integer.parseInt(lineElement[10]);
-		final Color colour = Color.rgb(r,g, b);
-		final boolean isFilled = Boolean.parseBoolean(lineElement[6]);
+		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
+		final int x = Integer.parseInt(row[COLUMN_TWO]);
+		final int y = Integer.parseInt(row[COLUMN_THREE]);
+		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
+		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
+		final int diameter = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int r = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int g = Integer.parseInt(row[COLUMN_NINE]);
+		final int b = Integer.parseInt(row[COLUMN_TEN]);
+		final Color colour = Color.rgb(r, g, b);
+		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
 		return new Circle(insertionTime, x, y, vx, vy, diameter, colour, isFilled);
@@ -45,127 +52,123 @@ public class ReadShapeFile {
 
 	/**
 	 * Constructs an oval shape using read file data.
-	 * @param lineElement is the read line passed in from readLineByLine() method.
+	 * @param row is the read line passed in from readLineByLine() method.
 	 * @return an Oval object.
 	 */
-	private static ClosedShape constructShapeOval(String[] lineElement) {
+	private static ClosedShape constructShapeOval(String[] row) {
 
-		final int insertionTime = Integer.parseInt(lineElement[1]);
-		final int x = Integer.parseInt(lineElement[2]);
-		final int y = Integer.parseInt(lineElement[3]);
-		final int vx = Integer.parseInt(lineElement[4]);
-		final int vy = Integer.parseInt(lineElement[5]);
-		final int width = Integer.parseInt(lineElement[7]);
-		final int height = Integer.parseInt(lineElement[8]);
-		final int r = Integer.parseInt(lineElement[9]);
-		final int g = Integer.parseInt(lineElement[10]);
-		final int b = Integer.parseInt(lineElement[11]);
-		final Color colour = Color.rgb(r,g, b);
-		final boolean isFilled = Boolean.parseBoolean(lineElement[6]);
+		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
+		final int x = Integer.parseInt(row[COLUMN_TWO]);
+		final int y = Integer.parseInt(row[COLUMN_THREE]);
+		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
+		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
+		final int width = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int height = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int r = Integer.parseInt(row[COLUMN_NINE]);
+		final int g = Integer.parseInt(row[COLUMN_TEN]);
+		final int b = Integer.parseInt(row[COLUMN_ELEVEN]);
+		final Color colour = Color.rgb(r, g, b);
+		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
 		return new Oval(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
 	}
 
-	//TODO: Implement RECT and change lineElement configurations to suite this shape
 	/**
 	 * Constructs a rectangle shape using read file data.
-	 * @param lineElement is the read line passed in from readLineByLine() method.
+	 * @param row is the read line passed in from readLineByLine() method.
 	 * @return a Rect object.
 	 */
-	private static ClosedShape constructShapeRect(String[] lineElement) {
+	private static ClosedShape constructShapeRect(String[] row) {
 
-		final int insertionTime = Integer.parseInt(lineElement[1]);
-		final int x = Integer.parseInt(lineElement[2]);
-		final int y = Integer.parseInt(lineElement[3]);
-		final int vx = Integer.parseInt(lineElement[4]);
-		final int vy = Integer.parseInt(lineElement[5]);
-		final int width = Integer.parseInt(lineElement[7]);
-		final int height = Integer.parseInt(lineElement[8]);
-		final int r = Integer.parseInt(lineElement[9]);
-		final int g = Integer.parseInt(lineElement[10]);
-		final int b = Integer.parseInt(lineElement[11]);
-		final Color colour = Color.rgb(r,g, b);
-		final boolean isFilled = Boolean.parseBoolean(lineElement[6]);
+		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
+		final int x = Integer.parseInt(row[COLUMN_TWO]);
+		final int y = Integer.parseInt(row[COLUMN_THREE]);
+		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
+		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
+		final int width = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int height = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int r = Integer.parseInt(row[COLUMN_NINE]);
+		final int g = Integer.parseInt(row[COLUMN_TEN]);
+		final int b = Integer.parseInt(row[COLUMN_ELEVEN]);
+		final Color colour = Color.rgb(r, g, b);
+		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
 		return new Rect(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
 	}
 
-	//TODO: Implement SQUARE and change lineElement configurations to suite this shape
 	/**
 	 * Constructs a rectangle shape using read file data.
-	 * @param lineElement is the read line passed in from readLineByLine() method.
+	 * @param row is the read line passed in from readLineByLine() method.
 	 * @return a Rect object.
 	 */
-	private static ClosedShape constructShapeSquare(String[] lineElement) {
+	private static ClosedShape constructShapeSquare(String[] row) {
 
-		final int insertionTime = Integer.parseInt(lineElement[1]);
-		final int x = Integer.parseInt(lineElement[2]);
-		final int y = Integer.parseInt(lineElement[3]);
-		final int vx = Integer.parseInt(lineElement[4]);
-		final int vy = Integer.parseInt(lineElement[5]);
-		final int side = Integer.parseInt(lineElement[7]);
-		final int r = Integer.parseInt(lineElement[8]);
-		final int g = Integer.parseInt(lineElement[9]);
-		final int b = Integer.parseInt(lineElement[10]);
-		final Color colour = Color.rgb(r,g, b);
-		final boolean isFilled = Boolean.parseBoolean(lineElement[6]);
+		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
+		final int x = Integer.parseInt(row[COLUMN_TWO]);
+		final int y = Integer.parseInt(row[COLUMN_THREE]);
+		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
+		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
+		final int side = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int r = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int g = Integer.parseInt(row[COLUMN_NINE]);
+		final int b = Integer.parseInt(row[COLUMN_TEN]);
+		final Color colour = Color.rgb(r, g, b);
+		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
 		return new Square(insertionTime, x, y, vx, vy, side, colour, isFilled);
 	}
 
-	//TODO: Implement RECT and change lineElement configurations to suite this shape
 	/**
 	 * Constructs a rectangle shape using read file data.
-	 * @param lineElement is the read line passed in from readLineByLine() method.
+	 * @param row is the read line passed in from readLineByLine() method.
 	 * @return a Rect object.
 	 */
-	private static ClosedShape constructShapeTriangle(String[] lineElement) {
+	private static ClosedShape constructShapeTriangle(String[] row) {
 
-		final int insertionTime = Integer.parseInt(lineElement[1]);
-		final int x = Integer.parseInt(lineElement[2]);
-		final int y = Integer.parseInt(lineElement[3]);
-		final int vx = Integer.parseInt(lineElement[4]);
-		final int vy = Integer.parseInt(lineElement[5]);
-		final int width = Integer.parseInt(lineElement[7]);
-		final int height = Integer.parseInt(lineElement[8]);
-		final int r = Integer.parseInt(lineElement[9]);
-		final int g = Integer.parseInt(lineElement[10]);
-		final int b = Integer.parseInt(lineElement[11]);
-		final Color colour = Color.rgb(r,g, b);
-		final boolean isFilled = Boolean.parseBoolean(lineElement[6]);
+		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
+		final int x = Integer.parseInt(row[COLUMN_TWO]);
+		final int y = Integer.parseInt(row[COLUMN_THREE]);
+		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
+		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
+		final int width = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int height = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int r = Integer.parseInt(row[COLUMN_NINE]);
+		final int g = Integer.parseInt(row[COLUMN_TEN]);
+		final int b = Integer.parseInt(row[COLUMN_ELEVEN]);
+		final Color colour = Color.rgb(r, g, b);
+		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
 		return new Triangle(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
 	}
-	//TODO: Add branching comments
 
 	/**
 	 * Identifies the type of shape to be created then calls the complementary construct
 	 * shape method.
 	 * @param shapeType String value containing the shape name circle, oval, rect or square.
-	 * @param lineElement Array consisting of values to be passed into ClosedShape constructor.
+	 * @param row Array consisting of values to be passed into ClosedShape constructor.
 	 * @return a ClosedShape object.
 	 */
-	private static ClosedShape chooseConstructor(String shapeType, String[] lineElement) {
+	private static ClosedShape chooseConstructor(String shapeType, String[] row) {
 		ClosedShape shape;
 		switch (shapeType.toLowerCase(Locale.ROOT)) {
 			case "circle":
-				shape = constructShapeCircle(lineElement);
+				shape = constructShapeCircle(row);
 				break;
 			case "oval":
-				shape = constructShapeOval(lineElement);
+				shape = constructShapeOval(row);
 				break;
 			case "rect":
-				shape = constructShapeRect(lineElement);
+				shape = constructShapeRect(row);
 				break;
 			case "square":
-				shape = constructShapeSquare(lineElement);
+				shape = constructShapeSquare(row);
 				break;
 			case "triangle":
-				shape = constructShapeTriangle(lineElement);
+				shape = constructShapeTriangle(row);
 				break;
 			default:
 				throw new IllegalStateException("Unexpected value: "
@@ -186,7 +189,7 @@ public class ReadShapeFile {
 		Queue<ClosedShape> shapeQueue = new Queue<>();
 
 		// Read in the shape files and place them on the Queue
-		while(in.hasNext()) {
+		while (in.hasNext()) {
 			String readLine = in.nextLine();
 			String[] lineElement = readLine.split(" ");
 
@@ -213,10 +216,10 @@ public class ReadShapeFile {
 	 * @return the queue of shapes from the file
 	 */
 	public static Queue<ClosedShape> readDataFile(String filename) {
-		//TODO: Comment here?
+		// This file contains the shapes to generate.
 		File inputFile = new File(filename);
 
-	    Scanner in = null; // null is not sensible. Please change
+	    Scanner in = null;
 
 		// Try to read file if the file is not found exit gracefully.
 		try {
