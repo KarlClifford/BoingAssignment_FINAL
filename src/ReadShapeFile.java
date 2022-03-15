@@ -9,13 +9,11 @@
  *
  * No Copyright
  *
- * This class reads a shape file. For the format of this shape file, see the assignment description.
- * Also, please see the shape files ExampleShapes.txt, ExampleShapesStill.txt, and TwoRedCircles.txt
+ * This class reads a shape file.
  */
 
 import javafx.scene.paint.Color;
 
-import javax.lang.model.type.UnknownTypeException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Locale;
