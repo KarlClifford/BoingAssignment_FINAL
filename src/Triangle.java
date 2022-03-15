@@ -1,9 +1,13 @@
-
-
 /**
  * Triangle.java
- * @version 1.0.0
- * Written by Karl Clifford
+ * @version 1.0
+ *
+ * Created 10/03/2022
+ *
+ * Last Modified 15/03/2022
+ * @author Karl Clifford
+ *
+ * This class creates a trianlge Shape.
  */
 
 import javafx.scene.paint.Color;
@@ -17,11 +21,11 @@ import javafx.scene.canvas.GraphicsContext;
  * triangle's bounding shape.
  */
 public class Triangle extends ClosedShape {
-    //The width and height of the triangle (major and minor axis).
+    // The width and height of the triangle (major and minor axis).
     private int width;
     private int height;
 
-    //The number of points that will make this polyline.
+    // The number of points that will make this polyline.
     private static final int N_POINTS = 3;
 
     /**
@@ -99,8 +103,6 @@ public class Triangle extends ClosedShape {
     public double[] getYCoords() {
         return new double[] {getY(), (getY() + getHeight()), (getY() + (getHeight() >> 1))};
     }
-    
-    
 
     /**
      * Draw the triangle.
