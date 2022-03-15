@@ -41,20 +41,20 @@ public class ReadShapeFile {
 	 */
 	private static ClosedShape constructShapeCircle(String[] row) {
 
-		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
-		final int x = Integer.parseInt(row[COLUMN_TWO]);
-		final int y = Integer.parseInt(row[COLUMN_THREE]);
-		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
-		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
-		final int diameter = Integer.parseInt(row[COLUMN_SEVEN]);
-		final int r = Integer.parseInt(row[COLUMN_EIGHT]);
-		final int g = Integer.parseInt(row[COLUMN_NINE]);
-		final int b = Integer.parseInt(row[COLUMN_TEN]);
-		final Color colour = Color.rgb(r, g, b);
-		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
+		final int INSERTION_TIME = Integer.parseInt(row[COLUMN_ONE]);
+		final int X = Integer.parseInt(row[COLUMN_TWO]);
+		final int Y = Integer.parseInt(row[COLUMN_THREE]);
+		final int VX = Integer.parseInt(row[COLUMN_FOUR]);
+		final int VY = Integer.parseInt(row[COLUMN_FIVE]);
+		final int DIAMETER = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int R = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int G = Integer.parseInt(row[COLUMN_NINE]);
+		final int B = Integer.parseInt(row[COLUMN_TEN]);
+		final Color COLOUR = Color.rgb(R, G, B);
+		final boolean IS_FILLED = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
-		return new Circle(insertionTime, x, y, vx, vy, diameter, colour, isFilled);
+		return new Circle(INSERTION_TIME, X, Y, VX, VY, DIAMETER, COLOUR, IS_FILLED);
 	}
 
 	/**
@@ -64,21 +64,21 @@ public class ReadShapeFile {
 	 */
 	private static ClosedShape constructShapeOval(String[] row) {
 
-		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
-		final int x = Integer.parseInt(row[COLUMN_TWO]);
-		final int y = Integer.parseInt(row[COLUMN_THREE]);
-		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
-		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
-		final int width = Integer.parseInt(row[COLUMN_SEVEN]);
-		final int height = Integer.parseInt(row[COLUMN_EIGHT]);
-		final int r = Integer.parseInt(row[COLUMN_NINE]);
-		final int g = Integer.parseInt(row[COLUMN_TEN]);
-		final int b = Integer.parseInt(row[COLUMN_ELEVEN]);
-		final Color colour = Color.rgb(r, g, b);
-		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
+		final int INSERTION_TIME = Integer.parseInt(row[COLUMN_ONE]);
+		final int X = Integer.parseInt(row[COLUMN_TWO]);
+		final int Y = Integer.parseInt(row[COLUMN_THREE]);
+		final int VX = Integer.parseInt(row[COLUMN_FOUR]);
+		final int VY = Integer.parseInt(row[COLUMN_FIVE]);
+		final int WIDTH = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int HEIGHT = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int R = Integer.parseInt(row[COLUMN_NINE]);
+		final int G = Integer.parseInt(row[COLUMN_TEN]);
+		final int B = Integer.parseInt(row[COLUMN_ELEVEN]);
+		final Color COLOUR = Color.rgb(R, G, B);
+		final boolean IS_FILLED = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
-		return new Oval(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
+		return new Oval(INSERTION_TIME, X, Y, VX, VY, WIDTH, HEIGHT, COLOUR, IS_FILLED);
 	}
 
 	/**
@@ -88,21 +88,21 @@ public class ReadShapeFile {
 	 */
 	private static ClosedShape constructShapeRect(String[] row) {
 
-		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
-		final int x = Integer.parseInt(row[COLUMN_TWO]);
-		final int y = Integer.parseInt(row[COLUMN_THREE]);
-		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
-		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
-		final int width = Integer.parseInt(row[COLUMN_SEVEN]);
-		final int height = Integer.parseInt(row[COLUMN_EIGHT]);
-		final int r = Integer.parseInt(row[COLUMN_NINE]);
-		final int g = Integer.parseInt(row[COLUMN_TEN]);
-		final int b = Integer.parseInt(row[COLUMN_ELEVEN]);
-		final Color colour = Color.rgb(r, g, b);
-		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
+		final int INSERTION_TIME = Integer.parseInt(row[COLUMN_ONE]);
+		final int X = Integer.parseInt(row[COLUMN_TWO]);
+		final int Y = Integer.parseInt(row[COLUMN_THREE]);
+		final int VX = Integer.parseInt(row[COLUMN_FOUR]);
+		final int VY = Integer.parseInt(row[COLUMN_FIVE]);
+		final int WIDTH = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int HEIGHT = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int R = Integer.parseInt(row[COLUMN_NINE]);
+		final int G = Integer.parseInt(row[COLUMN_TEN]);
+		final int B = Integer.parseInt(row[COLUMN_ELEVEN]);
+		final Color COLOUR = Color.rgb(R, G, B);
+		final boolean IS_FILLED = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
-		return new Rect(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
+		return new Rect(INSERTION_TIME, X, Y, VX, VY, WIDTH, HEIGHT, COLOUR, IS_FILLED);
 	}
 
 	/**
@@ -112,20 +112,20 @@ public class ReadShapeFile {
 	 */
 	private static ClosedShape constructShapeSquare(String[] row) {
 
-		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
-		final int x = Integer.parseInt(row[COLUMN_TWO]);
-		final int y = Integer.parseInt(row[COLUMN_THREE]);
-		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
-		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
-		final int side = Integer.parseInt(row[COLUMN_SEVEN]);
-		final int r = Integer.parseInt(row[COLUMN_EIGHT]);
-		final int g = Integer.parseInt(row[COLUMN_NINE]);
-		final int b = Integer.parseInt(row[COLUMN_TEN]);
-		final Color colour = Color.rgb(r, g, b);
-		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
+		final int INSERTION_TIME = Integer.parseInt(row[COLUMN_ONE]);
+		final int X = Integer.parseInt(row[COLUMN_TWO]);
+		final int Y = Integer.parseInt(row[COLUMN_THREE]);
+		final int VX = Integer.parseInt(row[COLUMN_FOUR]);
+		final int VY = Integer.parseInt(row[COLUMN_FIVE]);
+		final int SIDE = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int R = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int G = Integer.parseInt(row[COLUMN_NINE]);
+		final int B = Integer.parseInt(row[COLUMN_TEN]);
+		final Color COLOUR = Color.rgb(R, G, B);
+		final boolean IS_FILLED = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
-		return new Square(insertionTime, x, y, vx, vy, side, colour, isFilled);
+		return new Square(INSERTION_TIME, X, Y, VX, VY, SIDE, COLOUR, IS_FILLED);
 	}
 
 	/**
@@ -135,21 +135,21 @@ public class ReadShapeFile {
 	 */
 	private static ClosedShape constructShapeTriangle(String[] row) {
 
-		final int insertionTime = Integer.parseInt(row[COLUMN_ONE]);
-		final int x = Integer.parseInt(row[COLUMN_TWO]);
-		final int y = Integer.parseInt(row[COLUMN_THREE]);
-		final int vx = Integer.parseInt(row[COLUMN_FOUR]);
-		final int vy = Integer.parseInt(row[COLUMN_FIVE]);
-		final int width = Integer.parseInt(row[COLUMN_SEVEN]);
-		final int height = Integer.parseInt(row[COLUMN_EIGHT]);
-		final int r = Integer.parseInt(row[COLUMN_NINE]);
-		final int g = Integer.parseInt(row[COLUMN_TEN]);
-		final int b = Integer.parseInt(row[COLUMN_ELEVEN]);
-		final Color colour = Color.rgb(r, g, b);
-		final boolean isFilled = Boolean.parseBoolean(row[COLUMN_SIX]);
+		final int INSERTION_TIME = Integer.parseInt(row[COLUMN_ONE]);
+		final int X = Integer.parseInt(row[COLUMN_TWO]);
+		final int Y = Integer.parseInt(row[COLUMN_THREE]);
+		final int VX = Integer.parseInt(row[COLUMN_FOUR]);
+		final int VY = Integer.parseInt(row[COLUMN_FIVE]);
+		final int WIDTH = Integer.parseInt(row[COLUMN_SEVEN]);
+		final int HEIGHT = Integer.parseInt(row[COLUMN_EIGHT]);
+		final int R = Integer.parseInt(row[COLUMN_NINE]);
+		final int G = Integer.parseInt(row[COLUMN_TEN]);
+		final int B = Integer.parseInt(row[COLUMN_ELEVEN]);
+		final Color COLOUR = Color.rgb(R, G, B);
+		final boolean IS_FILLED = Boolean.parseBoolean(row[COLUMN_SIX]);
 
 
-		return new Triangle(insertionTime, x, y, vx, vy, width, height, colour, isFilled);
+		return new Triangle(INSERTION_TIME, X, Y, VX, VY, WIDTH, HEIGHT, COLOUR, IS_FILLED);
 	}
 
 	/**
